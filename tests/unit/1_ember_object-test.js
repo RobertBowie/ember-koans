@@ -24,56 +24,56 @@ module('Ember Object', {
 });
 
 test('Ember Object is an object', function(assert) {
-  assert.equal(typeof cat, _);
+  assert.equal(typeof cat, 'object');
 });
 
 test('Type of Object.extend is class', function(assert) {
-  assert.equal(Ember.typeOf(Animal), _);
+  assert.equal(Ember.typeOf(Animal), 'class');
 });
 
 test('Ember.Object.create makes an instance', function(assert) {
-  assert.equal(Ember.typeOf(beast), _);
+  assert.equal(Ember.typeOf(beast), 'instance');
 });
 
 test('Type of Object.create is instance', function(assert) {
-  assert.equal(Ember.typeOf(cat), _);
+  assert.equal(Ember.typeOf(cat), 'instance');
 });
 
 test('An instance will have class properties', function(assert) {
-  assert.equal(beast.type, _);
-  assert.equal(cat.type, _);
+  assert.equal(beast.type, 'critter');
+  assert.equal(cat.type, 'cat');
 });
 
 test('Using `get` will access a property', function(assert) {
-  assert.equal(beast.get('type'), _);
-  assert.equal(cat.get('type'), _);
+  assert.equal(beast.get('type'), 'critter');
+  assert.equal(cat.get('type'), 'cat');
 });
 
 test('A property of type Ember.computed, is an object', function(assert) {
   // Reading: http://emberjs.com/api/classes/Ember.computed.html
-  assert.equal(typeof beast.decription, _);
+  assert.equal(typeof beast.decription, 'object');
 });
 
 test('Using `get` will access a computed property', function(assert) {
-  assert.equal(beast.get('decription'), _);
-  assert.equal(cat.get('decription'), _);
+  assert.equal(beast.get('decription'), 'I am a critter');
+  assert.equal(cat.get('decription'), 'I am a cat');
 });
 
 test('Using `set` will change property', function(assert) {
   cat.set('type', 'kitten');
-  assert.equal(cat.get('type'), _);
+  assert.equal(cat.get('type'), 'kitten');
 });
 
 test('Setting a property will update dependent computed properties', function(assert) {
   cat.set('type', 'kitten');
-  assert.equal(cat.get('decription'), _);
+  assert.equal(cat.get('decription'), 'I am a kitten');
 });
 
 test('Computed properties are cached', function(assert) {
   cat.get('decription');
   assert.equal(count, 1);
   cat.get('decription');
-  assert.equal(count, _);
+  assert.equal(count, 1);
 });
 
 test('changing dependent property invalidates cache', function(assert) {
@@ -81,14 +81,14 @@ test('changing dependent property invalidates cache', function(assert) {
   assert.equal(count, 1);
   cat.set('type', 'kitten');
   cat.get('decription');
-  assert.equal(count, _);
+  assert.equal(count, 2);
 });
 
 test('Computed properties only execute when asked for', function(assert) {
   cat.set('type', 'kitten');
-  assert.equal(count, _, "Count == 0, because we havn't asked for it yet");
+  assert.equal(count, 0, "Count == 0, because we havn't asked for it yet");
   cat.get('decription');
-  assert.equal(count, _, "Now we have.");
+  assert.equal(count, 1, "Now we have.");
 });
 
 test('Ember protects against forgetting to use `set`', function(assert) {
@@ -96,5 +96,5 @@ test('Ember protects against forgetting to use `set`', function(assert) {
   assert.throws(() => {
     cat.type = 'kitten';
   });
-  assert.equal(cat.get('type'), _);
+  assert.equal(cat.get('type'), 'cat');
 });
