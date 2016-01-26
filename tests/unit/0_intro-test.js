@@ -1,4 +1,4 @@
-import { _ } from '../helpers/blank';
+// import { _ } from '../helpers/blank';
 import { module, test } from 'qunit';
 
 // Run `ember test --server` then visit:
@@ -7,25 +7,25 @@ import { module, test } from 'qunit';
 module('Asserts');
 
 test('Our First Test', function(assert) {
-  assert.ok(false); // Should be true
+  assert.ok(true); // Should be true
 });
 
 test('Better Messages', function(assert) {
-  assert.ok(false, 'Should be true: Please fix it');
+  assert.ok(true, 'Should be true: Please fix it');
 });
 
 test('Test Equality', function(assert) {
-  const expectedValue = _;
+  const expectedValue = 2;
   const actualValue = 1 + 1;
   assert.ok(actualValue === expectedValue);
 });
 
 test('Better way to Test Equality', function(assert) {
-  const expectedValue = _;
+  const expectedValue = 2;
   const actualValue = 1 + 1;
   assert.equal(actualValue, expectedValue);
 });
 
 test('You will need to fill in the blanks', function(assert) {
-  assert.equal(1 + 1, _);
+  assert.equal(1 + 1, 2);
 });
